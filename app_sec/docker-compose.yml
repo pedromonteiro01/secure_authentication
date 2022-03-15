@@ -1,0 +1,64 @@
+version: "3.3"
+
+services:
+  php-apache-environment:
+    image: php:7.4-apache
+    container_name: sio-vulnerabilities-php-apache
+    build:
+      context: ./www
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    #volumes:
+    #- ./www:/var/www/html
+    ports:
+      - 8000:80
+    networks:
+      my-network:
+        ipv4_address: 172.18.0.2
+  db:
+    container_name: sio-vulnerabilities-db
+    image: mysql
+    restart: always
+    environment:
+        MYSQL_ROOT_PASSWORD: password
+        MYSQL_DATABASE: sio-vulnerabilities
+        MYSQL_USER: user
+        MYSQL_PASSWORD: password
+    ports:
+        - "9906:3306"
+    volumes:
+      - ./db:/var/lib/mysql
+    networks:
+      my-network:
+        ipv4_address: 172.18.0.3
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+        - '8080:80'
+    restart: always
+    environment:
+        PMA_HOST: db
+    depends_on:
+        - db
+    networks:
+      my-network:
+        ipv4_address: 172.18.0.5
+
+  rest_api:
+    build:
+      context: ./rest_api
+      dockerfile: Dockerfile
+    volumes:
+      - ./rest_api:/home/rest_api
+    networks:
+      my-network:
+        ipv4_address: 172.18.0.4
+
+networks: 
+  my-network:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.0.0/16

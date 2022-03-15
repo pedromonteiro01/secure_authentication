@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='table.css') }}">
+{% endblock %}
+
+{% block content %}
+    <h2>Websites</h2>
+
+    <table style="width:100%">
+    <tr>
+        <th>Passwords</th>
+    </tr>
+    {% for key, value in data.items() %}
+    {% for v in value %}
+        <tr>
+            <td><a href='{{url_for("start_auth", dns = key, user = v[0])}}'>{{key}} - Username:{{v[0]}} Password:{{v[1]}}</a></td>
+        </tr>
+    {% endfor %}
+    {% endfor %}
+    </table>
+    <a href="/login"><button>Add Credentials</button></a>
+{% endblock %}

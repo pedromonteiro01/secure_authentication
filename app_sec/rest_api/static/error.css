@@ -1,0 +1,33 @@
+.main {
+    margin-top: 6rem;
+    text-align: center;
+}
+
+.main img {
+    width: 250px;
+    height: auto;
+}
+
+#header1 {
+    font-size: 38px;
+}
+
+#header2 {
+    font-size: 26px;
+    margin-bottom: 5rem;
+}
+
+.main a {
+    text-decoration: none;
+    font-size: 22px;
+    border: solid 2px red;
+    background-color: white;
+    color: black;
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+.main a:hover {
+    color: white;
+    background-color: red;
+}

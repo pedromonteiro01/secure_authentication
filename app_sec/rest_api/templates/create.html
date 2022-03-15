@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} UAP {% endblock %}</h1>
+    <form action='/' method="post">
+        {% if data %}
+        <p style='font-size:14px; color: red;'>{{data}}</p>
+        {% endif %}
+        <label for="password">Password</label>
+        <input type="password" name="password-create"
+                placeholder="Password"></input>
+        <br>
+        <button type="submit">Login</button>
+    </form>
+{% endblock %}

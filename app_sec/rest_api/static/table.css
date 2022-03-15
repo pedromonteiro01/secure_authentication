@@ -1,0 +1,31 @@
+table, th, td {
+    border:1px solid black;
+}
+table {
+    margin-left: 20%;
+    margin-right: 20%;
+    max-width: 60%;
+}
+
+th {
+    font-size: 22px;
+    padding: 0.7rem;
+}
+
+td {
+    font-size: 18px;
+}
+
+td a {
+    display: block; 
+    padding: 1.2rem;
+    text-decoration: none;
+    color: inherit;
+}
+
+tr {
+    text-align: center;
+}
+td:hover {
+    background-color: #ccc;
+}

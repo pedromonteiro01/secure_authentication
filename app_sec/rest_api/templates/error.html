@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='error.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="main">
+        <img src="https://i.pinimg.com/originals/d0/17/47/d01747c4285afa4e7a6e8656c9cd60cb.png" alt="Wrong">
+        <h1 id="header1">Authentication Failed</h1>
+        <h1 id="header2">Something Went Wrong...</h1>
+        <a href="/base">Reload</a>
+    </div>
+{% endblock %}
